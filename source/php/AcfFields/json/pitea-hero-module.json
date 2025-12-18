@@ -1,0 +1,192 @@
+[
+  {
+    "key": "group_pitea_hero_module",
+    "title": "Pitea Hero Module",
+    "fields": [
+      {
+        "key": "field_pitea_hero_hide_title",
+        "label": "Hide Title",
+        "name": "mod_hide_title",
+        "type": "true_false",
+        "instructions": "Hide the module title on the frontend",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "message": "",
+        "default_value": 0,
+        "ui": 1,
+        "ui_on_text": "",
+        "ui_off_text": ""
+      },
+      {
+        "key": "field_pitea_hero_background_image",
+        "label": "Background Image",
+        "name": "mod_piteahero_background_image",
+        "type": "image",
+        "instructions": "Select the background image for the hero section",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "return_format": "array",
+        "preview_size": "medium",
+        "library": "all",
+        "min_width": "",
+        "min_height": "",
+        "min_size": "",
+        "max_width": "",
+        "max_height": "",
+        "max_size": "",
+        "mime_types": ""
+      },
+      {
+        "key": "field_pitea_hero_heading",
+        "label": "Heading",
+        "name": "mod_piteahero_heading",
+        "type": "text",
+        "instructions": "Main heading text displayed in the hero section",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "Välkommen till Piteå kommun",
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_pitea_hero_search_placeholder",
+        "label": "Search Placeholder",
+        "name": "mod_piteahero_search_placeholder",
+        "type": "text",
+        "instructions": "Placeholder text for the search input field",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "Vad kan vi hjälpa dig med?",
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_pitea_hero_buttons",
+        "label": "Buttons",
+        "name": "mod_piteahero_buttons",
+        "type": "repeater",
+        "instructions": "Add buttons to display in the hero section",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "collapsed": "field_pitea_hero_button_text",
+        "min": 0,
+        "max": 12,
+        "layout": "block",
+        "button_label": "Add Button",
+        "rows_per_page": 20,
+        "sub_fields": [
+          {
+            "key": "field_pitea_hero_button_icon",
+            "label": "Icon",
+            "name": "mod_piteahero_button_icon",
+            "type": "icon",
+            "instructions": "Select an icon for this button",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "parent_repeater": "field_pitea_hero_buttons"
+          },
+          {
+            "key": "field_pitea_hero_button_text",
+            "label": "Text",
+            "name": "mod_piteahero_button_text",
+            "type": "text",
+            "instructions": "Button label text",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "parent_repeater": "field_pitea_hero_buttons"
+          },
+          {
+            "key": "field_pitea_hero_button_link",
+            "label": "Link",
+            "name": "mod_piteahero_button_link",
+            "type": "link",
+            "instructions": "Button link destination",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "return_format": "array",
+            "parent_repeater": "field_pitea_hero_buttons"
+          }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "mod-pitea-hero"
+        }
+      ],
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/pitea-hero"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": ""
+  }
+]

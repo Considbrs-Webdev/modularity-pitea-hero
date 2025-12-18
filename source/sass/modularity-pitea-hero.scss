@@ -1,0 +1,171 @@
+.modularity-mod-pitea-hero  .c-pitea-hero {
+
+    --c-button-default-background-color: #edf1e9;
+    --c-button-default-color: #233B1F;
+    --c-button-default-border-color: #000;
+    --c-button-default-hover-background-color: #000;
+    --c-button-default-hover-color: #fff;
+    --c-button-default-hover-border-color: #000;
+    --c-button-default-active-background-color: #000;
+    --c-button-default-active-color: #fff;
+    --c-button-default-active-border-color: #000;
+
+    
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1920px;
+    margin: 0 auto;
+    min-height: 600px;
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &__heading {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+        color: #fff;
+    }
+
+    &__container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    &__content {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__search {
+        display: flex;
+        flex-direction: row;    
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: var(--c-button-default-background-color);
+        border-radius: 8px;
+        padding: 4px;
+        gap: 10px;
+        
+        &-input {
+            flex: 1;
+            min-width: 0;
+            
+            .c-field__inner {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                box-shadow: none;
+
+                input {
+                    height: auto !important;
+                    padding: 10px !important;
+
+                }
+            }
+            
+            
+        }
+
+        &-button {
+            flex-shrink: 0;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            min-width: auto;
+            width: auto;
+            height: auto !important;
+            
+            .c-button__label {
+                padding: 0;
+            }
+            
+            .c-icon {
+                color: var(--c-button-default-color);
+            }
+            
+            &:hover {
+                background-color: transparent;
+                
+                .c-icon {
+                    color: var(--c-button-default-hover-color);
+                }
+            }
+        }
+    }
+
+
+    &__buttons {
+        display: flex;       
+        flex-wrap: wrap;    
+        width: 100%;
+        max-width: 700px;   
+        margin: 0 auto;
+        justify-content: center;
+        gap: var(--base, 6px);
+
+        
+
+        .c-button + .c-button {
+            margin-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(2, max-content);
+        }
+        
+        @media (max-width: 480px) {
+            grid-template-columns: max-content;
+        }
+    }
+
+    &__button {
+        /* Magin händer här: */
+        min-width: min-content;         
+        width: fit-content;
+        
+        background-color: var(--c-button-default-background-color);
+        white-space: nowrap;
+      
+        .c-button__label {
+            justify-content: space-between;
+            flex-direction: row-reverse !important;
+            letter-spacing: 0.0em;
+
+            &-text {
+                font-weight: 700;
+                font-size: 16px;
+            color: var(--c-button-default-color);
+
+            }
+        }
+    }
+}
