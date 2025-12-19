@@ -47,6 +47,26 @@
         "mime_types": ""
       },
       {
+        "key": "field_pitea_hero_overlay_opacity",
+        "label": "Overlay Opacity",
+        "name": "mod_piteahero_overlay_opacity",
+        "type": "range",
+        "instructions": "Adjust the darkness of the overlay (0 = transparent, 100 = fully dark)",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": 50,
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "prepend": "",
+        "append": "%"
+      },
+      {
         "key": "field_pitea_hero_heading",
         "label": "Heading",
         "name": "mod_piteahero_heading",

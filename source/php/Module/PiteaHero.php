@@ -34,6 +34,7 @@ class PiteaHero extends \Modularity\Module
 
         // Get basic fields
         $data['backgroundImage'] = get_field($fieldNamespace . 'background_image', $this->ID);
+        $data['overlayOpacity'] = get_field($fieldNamespace . 'overlay_opacity', $this->ID);
         $data['heading'] = get_field($fieldNamespace . 'heading', $this->ID);
         $data['searchPlaceholder'] = get_field($fieldNamespace . 'search_placeholder', $this->ID);
 

@@ -9,7 +9,7 @@
 
 @if (!empty($backgroundImage) || !empty($heading) || !empty($buttons))
     <section class="c-pitea-hero" style="@if(!empty($backgroundImage['url'])) background-image: url('{{ $backgroundImage['url'] }}'); @endif">
-        <div class="c-pitea-hero__overlay"></div>
+        <div class="c-pitea-hero__overlay" style="opacity: {{ ($overlayOpacity ?? 50) / 100 }};"></div>
         <div class="c-pitea-hero__container">
             <div class="c-pitea-hero__content">
                 @if (!empty($heading))
