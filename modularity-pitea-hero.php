@@ -5,7 +5,7 @@
  * Plugin URI:        https://github.com/Considbrs-Webdev/modularity-pitea-hero
  * Description:       A module for the Pitea Hero.
  * Version:           1.0.0
- * Author:            William Lundqvist
+ * Author:            Consid Borås AB
  * Author URI:        https://github.com/Considbrs-Webdev
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT

@@ -15,9 +15,10 @@ class PiteaHero extends \Modularity\Module
 
     public function init()
     {
-        $this->nameSingular = __("PiteaHero", 'modularity-pitea-hero');
-        $this->namePlural = __("PiteaHero", 'modularity-pitea-hero');
-        $this->description = __("A module for the Pitea Hero.", 'modularity-pitea-hero');
+        $this->nameSingular = __("Piteå Hero", 'modularity-pitea-hero');
+        $this->namePlural = __("Piteå Hero", 'modularity-pitea-hero');
+        $this->description = __("A module for the Piteå Hero.", 'modularity-pitea-hero');
+
     }
 
     /**
@@ -28,9 +29,6 @@ class PiteaHero extends \Modularity\Module
     {
         $data = array();
         $fieldNamespace = 'mod_piteahero_';
-
-        // Get hide title field (standard Modularity field)
-        $data['hideTitle'] = (bool) get_field('mod_hide_title', $this->ID);
 
         // Get basic fields
         $data['backgroundImage'] = get_field($fieldNamespace . 'background_image', $this->ID);

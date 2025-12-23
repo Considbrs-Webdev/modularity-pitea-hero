@@ -40,7 +40,15 @@ parent: Boilerplates
 
 [![modularity-pitea-hero Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
+A WordPress Modularity module for creating hero sections on Piteå municipality websites. This module provides a customizable hero section with background image, heading, search functionality, and action buttons.
+
+### Features
+
+* **Background Image**: Upload and display a background image for the hero section
+* **Overlay Control**: Adjustable overlay opacity to ensure text readability
+* **Custom Heading**: Set a main heading text for the hero section
+* **Search Bar**: Integrated search functionality with customizable placeholder text
+* **Action Buttons**: Add multiple buttons with icons and links to guide users
 
 ### Built With
 
@@ -48,6 +56,8 @@ Here's a blank template to get started:
 * NPM
 * Webpack
 * Modularity
+* ACF (Advanced Custom Fields)
+* Blade templating
 
 ## Getting Started
 
@@ -55,16 +65,25 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them (mac os).
-* composer
+* WordPress with Modularity plugin installed
+* PHP 7.4 or higher
+* Composer
+* Node.js and npm
+* Advanced Custom Fields (ACF) plugin
+
+Installation instructions:
+
+* **Composer** (macOS):
 ```sh
 brew install composer
 ```
-* npm
+
+* **Node.js and npm** (macOS):
 ```sh
 brew install node
 ```
-* modularity
+
+* **Modularity**:
 ```sh
 composer require helsingborg-stad/modularity
 ```
@@ -85,9 +104,20 @@ composer install
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+After installation, the module will be available in the WordPress Modularity module library. You can add it to any page or post where Modularity is enabled.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Module Configuration
+
+1. **Background Image**: Upload a background image (required)
+2. **Overlay Opacity**: Adjust the overlay darkness (0-100%, default: 50%)
+3. **Heading**: Set the main heading text (required, default: "Välkommen till Piteå kommun")
+4. **Search Placeholder**: Customize the search input placeholder text (optional, default: "Vad kan vi hjälpa dig med?")
+5. **Buttons**: Add up to 12 action buttons with:
+   - Icon selection
+   - Button text
+   - Link destination
+
+The search bar will always be displayed, even if no placeholder text is set.
 
 ## Deploy
 

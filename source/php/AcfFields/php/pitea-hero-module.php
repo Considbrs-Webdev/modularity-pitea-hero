@@ -7,25 +7,6 @@ if (function_exists('acf_add_local_field_group')) {
     'title' => __('Pitea Hero Module', 'modularity-pitea-hero'),
     'fields' => array(
         0 => array(
-            'key' => 'field_pitea_hero_hide_title',
-            'label' => __('Hide Title', 'modularity-pitea-hero'),
-            'name' => 'mod_hide_title',
-            'type' => 'true_false',
-            'instructions' => __('Hide the module title on the frontend', 'modularity-pitea-hero'),
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'message' => '',
-            'default_value' => 0,
-            'ui' => 1,
-            'ui_on_text' => '',
-            'ui_off_text' => '',
-        ),
-        1 => array(
             'key' => 'field_pitea_hero_background_image',
             'label' => __('Background Image', 'modularity-pitea-hero'),
             'name' => 'mod_piteahero_background_image',
@@ -49,7 +30,7 @@ if (function_exists('acf_add_local_field_group')) {
             'max_size' => '',
             'mime_types' => '',
         ),
-        2 => array(
+        1 => array(
             'key' => 'field_pitea_hero_overlay_opacity',
             'label' => __('Overlay Opacity', 'modularity-pitea-hero'),
             'name' => 'mod_piteahero_overlay_opacity',
@@ -69,7 +50,7 @@ if (function_exists('acf_add_local_field_group')) {
             'prepend' => '',
             'append' => '%',
         ),
-        3 => array(
+        2 => array(
             'key' => 'field_pitea_hero_heading',
             'label' => __('Heading', 'modularity-pitea-hero'),
             'name' => 'mod_piteahero_heading',
@@ -87,7 +68,7 @@ if (function_exists('acf_add_local_field_group')) {
             'append' => '',
             'maxlength' => '',
         ),
-        4 => array(
+        3 => array(
             'key' => 'field_pitea_hero_search_placeholder',
             'label' => __('Search Placeholder', 'modularity-pitea-hero'),
             'name' => 'mod_piteahero_search_placeholder',
@@ -105,7 +86,7 @@ if (function_exists('acf_add_local_field_group')) {
             'append' => '',
             'maxlength' => '',
         ),
-        5 => array(
+        4 => array(
             'key' => 'field_pitea_hero_buttons',
             'label' => __('Buttons', 'modularity-pitea-hero'),
             'name' => 'mod_piteahero_buttons',

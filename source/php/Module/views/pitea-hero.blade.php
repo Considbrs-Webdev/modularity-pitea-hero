@@ -1,12 +1,3 @@
-@if ($hideTitle && !empty($postTitle))
-    @typography([
-        "element" => "h2",
-        "classList" => ["u-margin--0"]
-    ])
-        {{ $postTitle }}
-    @endtypography
-@endif
-
 @if (!empty($backgroundImage) || !empty($heading) || !empty($buttons))
     <section class="c-pitea-hero" style="@if(!empty($backgroundImage['url'])) background-image: url('{{ $backgroundImage['url'] }}'); @endif">
         <div class="c-pitea-hero__overlay" style="opacity: {{ ($overlayOpacity ?? 50) / 100 }};"></div>
@@ -23,34 +14,32 @@
                     @endtypography
                 @endif
 
-                @if (!empty($searchPlaceholder))
-                    <form class="c-pitea-hero__search" role="search" method="get" action="{{ home_url('/') }}">
-                        @field([
-                            'type' => 'search',
-                            'name' => 's',
-                            'placeholder' => $searchPlaceholder,
-                            'required' => false,
-                            'shadow' => false,
-                            'borderless' => true,
-                            'hideLabel' => true,
-                            'classList' => ['c-pitea-hero__search-input'],
-                            'fieldAttributeList' => [
-                                'aria-label' => $searchPlaceholder
-                            ]
-                        ])
-                        @endfield
-                        @button([
-                            'type' => 'submit',
-                            'text' => false,
-                            'icon' => 'search',
-                            'classList' => ['c-pitea-hero__search-button'],
-                            'attributeList' => [
-                                'aria-label' => __('Search', 'modularity-pitea-hero')
-                            ]
-                        ])
-                        @endbutton
-                    </form>
-                @endif
+                <form class="c-pitea-hero__search" role="search" method="get" action="{{ home_url('/') }}">
+                    @field([
+                        'type' => 'search',
+                        'name' => 's',
+                        'placeholder' => !empty($searchPlaceholder) ? $searchPlaceholder : __('Search', 'modularity-pitea-hero'),
+                        'required' => false,
+                        'shadow' => false,
+                        'borderless' => true,
+                        'hideLabel' => true,
+                        'classList' => ['c-pitea-hero__search-input'],
+                        'fieldAttributeList' => [
+                            'aria-label' => !empty($searchPlaceholder) ? $searchPlaceholder : __('Search', 'modularity-pitea-hero')
+                        ]
+                    ])
+                    @endfield
+                    @button([
+                        'type' => 'submit',
+                        'text' => false,
+                        'icon' => 'search',
+                        'classList' => ['c-pitea-hero__search-button'],
+                        'attributeList' => [
+                            'aria-label' => __('Search', 'modularity-pitea-hero')
+                        ]
+                    ])
+                    @endbutton
+                </form>
 
                 @if (!empty($buttons) && is_array($buttons))
                     <div class="c-pitea-hero__buttons">

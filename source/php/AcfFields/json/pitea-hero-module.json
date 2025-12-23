@@ -4,25 +4,6 @@
     "title": "Pitea Hero Module",
     "fields": [
       {
-        "key": "field_pitea_hero_hide_title",
-        "label": "Hide Title",
-        "name": "mod_hide_title",
-        "type": "true_false",
-        "instructions": "Hide the module title on the frontend",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "message": "",
-        "default_value": 0,
-        "ui": 1,
-        "ui_on_text": "",
-        "ui_off_text": ""
-      },
-      {
         "key": "field_pitea_hero_background_image",
         "label": "Background Image",
         "name": "mod_piteahero_background_image",

@@ -1,20 +1,20 @@
 {
-    "name": "Considbrs-Webdev/modularity-pitea-hero",
-    "description": "A module for the Pitea Hero.",
-    "type": "wordpress-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "William Lundqvist",
-            "email": "william.lundqvist@consid.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {},
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Considbrs-Webdev/modularity-pitea-hero.git"
-        }
-    ]
+  "name": "Considbrs-Webdev/modularity-pitea-hero",
+  "description": "A module for the Pitea Hero.",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Consid Borås AB",
+      "email": "info@consid.se"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Considbrs-Webdev/modularity-pitea-hero.git"
+    }
+  ]
 }
