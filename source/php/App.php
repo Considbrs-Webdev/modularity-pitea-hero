@@ -18,8 +18,6 @@ class App
 {
     public function __construct()
     {
-        // Init subset
-        new Admin\Settings();
 
         // Register module with Modularity
         add_action('init', [$this, 'registerModule']);
