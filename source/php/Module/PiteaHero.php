@@ -1,24 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityPiteaHero\Module;
 
 use ModularityPiteaHero\Helper\CacheBust;
 
 /**
  * Class PiteaHero
- * @package PiteaHero\Module
+ * @package ModularityPiteaHero\Module
  */
 class PiteaHero extends \Modularity\Module
 {
     public $slug = 'pitea-hero';
-    public $supports = array();
+    public $supports = [];
 
-    public function init()
+    public function init(): void
     {
-        $this->nameSingular = __("Piteå Hero", 'modularity-pitea-hero');
-        $this->namePlural = __("Piteå Hero", 'modularity-pitea-hero');
-        $this->description = __("A module for the Piteå Hero.", 'modularity-pitea-hero');
-
+        $this->nameSingular = __('Piteå Hero', 'modularity-pitea-hero');
+        $this->namePlural = __('Piteå Hero', 'modularity-pitea-hero');
+        $this->description = __('A module for the Piteå Hero.', 'modularity-pitea-hero');
     }
 
     /**
@@ -27,7 +28,13 @@ class PiteaHero extends \Modularity\Module
      */
     public function data(): array
     {
-        $data = array();
+        $data = [];
+
+        // Append field config
+        $data = array_merge($data, (array) \Modularity\Helper\FormatObject::camelCase(
+            $this->getFields(),
+        ));
+
         $fieldNamespace = 'mod_piteahero_';
 
         // Get basic fields
@@ -38,15 +45,15 @@ class PiteaHero extends \Modularity\Module
 
         // Get buttons repeater
         $buttons = get_field($fieldNamespace . 'buttons', $this->ID);
-        $data['buttons'] = array();
+        $data['buttons'] = [];
 
         if (!empty($buttons) && is_array($buttons)) {
             foreach ($buttons as $button) {
-                $buttonData = array(
+                $buttonData = [
                     'icon' => isset($button[$fieldNamespace . 'button_icon']) ? $button[$fieldNamespace . 'button_icon'] : '',
                     'text' => isset($button[$fieldNamespace . 'button_text']) ? $button[$fieldNamespace . 'button_text'] : '',
-                    'link' => isset($button[$fieldNamespace . 'button_link']) ? $button[$fieldNamespace . 'button_link'] : array(),
-                );
+                    'link' => isset($button[$fieldNamespace . 'button_link']) ? $button[$fieldNamespace . 'button_link'] : [],
+                ];
 
                 // Format link field (ACF link returns array with url, title, target)
                 if (!empty($buttonData['link']) && is_array($buttonData['link'])) {
@@ -73,43 +80,35 @@ class PiteaHero extends \Modularity\Module
      */
     public function template(): string
     {
-        return "pitea-hero.blade.php";
+        return 'pitea-hero.blade.php';
     }
 
     /**
      * Style - Register & adding css
      * @return void
      */
-    public function style()
+    public function style(): void
     {
-        //Register custom css
-        wp_register_style(
-            'modularity-pitea-hero',
-            MODULARITY_PITEA_HERO_URL . '/dist/' . CacheBust::name('css/modularity-pitea-hero.css'),
-            null,
-            '1.0.0'
-        );
-
-        //Enqueue
-        wp_enqueue_style('modularity-pitea-hero');
+        $this->wpEnqueue?->add('css/modularity-pitea-hero.css', [], '1.0.0');
     }
 
     /**
-     * Script - Register & adding scripts
+     * Script - Register & adding js
      * @return void
      */
-    public function script()
+    public function script(): void
     {
-        //Register custom css
-        wp_register_script(
-            'modularity-pitea-hero',
-            MODULARITY_PITEA_HERO_URL . '/dist/' . CacheBust::name('js/modularity-pitea-hero.js'),
-            null,
-            '1.0.0'
-        );
+        $scriptFile = CacheBust::name('js/modularity-pitea-hero.js');
 
-        //Enqueue
-        wp_enqueue_script('modularity-pitea-hero');
+        if ($scriptFile) {
+            wp_enqueue_script(
+                'modularity-pitea-hero',
+                MODULARITYPITEAHERO_URL . '/assets/dist/' . $scriptFile,
+                [],
+                null,
+                true
+            );
+        }
     }
 
     /**

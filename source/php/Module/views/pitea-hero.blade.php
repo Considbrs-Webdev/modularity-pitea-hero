@@ -13,7 +13,7 @@
                         {{ $heading }}
                     @endtypography
                 @endif
-
+<!-- placeholder code for search form -->
                 <form class="c-pitea-hero__search" role="search" method="get" action="{{ home_url('/') }}">
                     @field([
                         'type' => 'search',

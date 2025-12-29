@@ -2,40 +2,53 @@
 
 namespace ModularityPiteaHero\Helper;
 
+/**
+ * Class CacheBust
+ * 
+ * Handles resolving hashed filenames from the Vite manifest.
+ * 
+ * @package ModularityPiteaHero\Helper
+ */
 class CacheBust
 {
-    /**
-     * Returns the revved/cache-busted file name of an asset.
-     * @param string $name Asset name (array key) from rev-mainfest.json
-     * @param boolean $returnName Returns $name if set to true while in dev mode
-     * @return string filename of the asset (including directory above)
-     */
-    public static function name($name, $returnName = true)
-    {
-        $revManifest = self::getRevManifest();
+    private static ?array $manifest = null;
 
-        if (!isset($revManifest[$name])) {
-            return;
+    /**
+     * Get the hashed filename from the manifest
+     *
+     * @param string $name The original filename (e.g., 'css/modularity-pitea-hero.css')
+     * @return string|false The hashed filename or false if not found
+     */
+    public static function name(string $name): string|false
+    {
+        $manifest = self::getManifest();
+
+        if ($manifest && isset($manifest[$name])) {
+            return $manifest[$name];
         }
 
-        return $revManifest[$name];
+        return false;
     }
 
     /**
-     * Decode assets json to array
-     * @return array containg assets filenames
+     * Load and cache the manifest file
+     *
+     * @return array|null The manifest array or null if not found
      */
-    public static function getRevManifest()
+    private static function getManifest(): ?array
     {
-        $jsonPath = MODULARITY_PITEA_HERO_PATH . apply_filters(
-            'ModularityPiteaHero/Helper/CacheBust/RevManifestPath',
-            'dist/manifest.json'
-        );
-
-        if (file_exists($jsonPath)) {
-            return json_decode(file_get_contents($jsonPath), true);
-        } elseif (WP_DEBUG) {
-            echo '<div style="color:red">Error: Assets not built. Go to ' . MODULARITY_PITEA_HERO_PATH . ' and run gulp. See ' . MODULARITY_PITEA_HERO_PATH . 'README.md for more info.</div>';
+        if (self::$manifest !== null) {
+            return self::$manifest;
         }
+
+        $manifestPath = MODULARITYPITEAHERO_PATH . 'assets/dist/manifest.json';
+
+        if (file_exists($manifestPath)) {
+            $manifestContent = file_get_contents($manifestPath);
+            self::$manifest = json_decode($manifestContent, true);
+            return self::$manifest;
+        }
+
+        return null;
     }
 }

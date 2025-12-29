@@ -1,53 +1,64 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ModularityPiteaHero;
 
 use ModularityPiteaHero\Helper\CacheBust;
 
+/**
+ * Class App
+ * 
+ * Main application bootstrap class.
+ * Initialize your plugin components here.
+ * 
+ * @package ModularityPiteaHero
+ */
 class App
 {
     public function __construct()
     {
-
-        //Init subset
+        // Init subset
         new Admin\Settings();
 
-        //Register module
-        add_action('init', array($this, 'registerModule'));
+        // Register module with Modularity
+        add_action('init', [$this, 'registerModule']);
 
-        // Add view paths
-        add_filter('Municipio/blade/view_paths', array($this, 'addViewPaths'), 1, 1);
+        // Enqueue styles
+        add_action('wp_enqueue_scripts', [$this, 'enqueueStyles']);
     }
 
     /**
-     * Register the module
+     * Enqueue styles
+     * 
      * @return void
      */
-    public function registerModule()
+    public function enqueueStyles(): void
     {
-        if (function_exists('modularity_register_module')) {
-            modularity_register_module(
-                MODULARITY_PITEA_HERO_PATH . 'source/php/Module/',
-                'PiteaHero'
+        $styleFile = CacheBust::name('css/modularity-pitea-hero.css');
+
+        if ($styleFile) {
+            wp_enqueue_style(
+                'modularity-pitea-hero',
+                MODULARITYPITEAHERO_URL . '/assets/dist/' . $styleFile,
+                [],
+                null
             );
         }
     }
 
     /**
-     * Add searchable blade template paths
-     * @param array  $array Template paths
-     * @return array        Modified template paths
+     * Register the module with Modularity
+     * 
+     * @return void
      */
-    public function addViewPaths($array)
+    public function registerModule(): void
     {
-        // If child theme is active, insert plugin view path after child views path.
-        if (is_child_theme()) {
-            array_splice($array, 2, 0, array(MODULARITY_PITEA_HERO__VIEW_PATH));
-        } else {
-            // Add view path first in the list if child theme is not active.
-            array_unshift($array, MODULARITY_PITEA_HERO_VIEW_PATH);
+        if (function_exists('modularity_register_module')) {
+            modularity_register_module(
+                MODULARITYPITEAHERO_MODULE_PATH,
+                'PiteaHero',
+            );
         }
-
-        return $array;
     }
 }

@@ -1,5 +1,4 @@
 # ignore all files starting with . or ~
-.*
 ~*
 
 # ignore node/grunt dependency directories
@@ -47,6 +46,8 @@ Thumbs.db
 dist/
 dist
 
+/assets/
+
 # -------------------------
 # BEGIN Whitelisted Files
 # -------------------------
@@ -54,3 +55,4 @@ dist
 # track these files, if they exist
 !.gitignore
 !.editorconfig
+!.vscode

@@ -10,11 +10,17 @@
     }
   ],
   "minimum-stability": "stable",
+  "prefer-stable": true,
   "require": {},
   "repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/Considbrs-Webdev/modularity-pitea-hero.git"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "ModularityPiteaHero\\": "source/php/"
+    }
+  }
 }
