@@ -5,27 +5,53 @@ if (php_sapi_name() !== 'cli') {
     exit(0);
 }
 
-// Any command needed to run and build plugin assets when newly cheched out of repo.
-$buildCommands = [
-    'npm install --no-progress',
-    'npx browserslist@latest --update-db',
-    'npm run build',
-    'composer install --prefer-dist --no-progress'
-];
+$buildCommands = [];
+
+//Run composer if composer.json is found
+if (file_exists('composer.json')) {
+    $buildCommands[] = 'composer dump-autoload';
+}
+
+//Run npm if package.json is found
+if (file_exists('package.json') && file_exists('package-lock.json')) {
+    if (is_array($argv) && !in_array('--install-npm', $argv)) {
+        $buildCommands[] = 'npm ci --no-progress --no-audit';
+        $buildCommands[] = 'npm run build';
+    } else {
+        $npmPackage = json_decode(file_get_contents('package.json'));
+        $buildCommands[] = "npm install --no-progress --no-audit";
+        $buildCommands[] = "npm run build";
+    }
+} elseif (file_exists('package.json') && !file_exists('package-lock.json')) {
+    if (is_array($argv) && !in_array('--install-npm', $argv)) {
+        $buildCommands[] = 'npm install --no-progress --no-audit';
+        $buildCommands[] = 'npm run build';
+    } else {
+        $npmPackage = json_decode(file_get_contents('package.json'));
+        $buildCommands[] = "npm install --no-progress --no-audit";
+        $buildCommands[] = "npm run build";
+    }
+}
 
 // Files and directories not suitable for prod to be removed.
 $removables = [
-    '.git',
     '.gitignore',
-    '.github',
     'build.php',
-    'composer.json',
-    'composer.lock',
-    'webpack.config.js',
-    'node_modules',
+    'vite.config.js',
+    'vite.config.mjs',
+    'package.json',
     'package-lock.json',
-    'package.json'
+    'phpunit.xml.dist',
+    'README.md',
+    './node_modules/',
+    './source/js/',
+    './source/sass/',
+    'LICENSE',
 ];
+
+if (is_array($argv) && !in_array('--release', $argv)) {
+    $removables = array_merge($removables, ['.git']);
+}
 
 $dirName = basename(dirname(__FILE__));
 
@@ -34,15 +60,17 @@ $output = '';
 $exitCode = 0;
 foreach ($buildCommands as $buildCommand) {
     print "---- Running build command '$buildCommand' for $dirName. ----\n";
+    $timeStart = microtime(true);
     $exitCode = executeCommand($buildCommand);
-    print "---- Done build command '$buildCommand' for $dirName. ----\n";
+    $buildTime = round(microtime(true) - $timeStart);
+    print "---- Done build command '$buildCommand' for $dirName.  Build time: $buildTime seconds. ----\n\n";
     if ($exitCode > 0) {
         exit($exitCode);
     }
 }
 
 // Remove files and directories if '--cleanup' argument is supplied to save local developers from disasters.
-if (isset($argv[1]) && $argv[1] === '--cleanup') {
+if (is_array($argv) && in_array('--cleanup', $argv)) {
     foreach ($removables as $removable) {
         if (file_exists($removable)) {
             print "Removing $removable from $dirName\n";
@@ -58,7 +86,14 @@ if (isset($argv[1]) && $argv[1] === '--cleanup') {
  */
 function executeCommand($command)
 {
-    $proc = popen("$command 2>&1 ; echo Exit status : $?", 'r');
+    $fullCommand = '';
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        $fullCommand = "cmd /v:on /c \"$command 2>&1 & echo Exit status : !ErrorLevel!\"";
+    } else {
+        $fullCommand = "$command 2>&1 ; echo Exit status : $?";
+    }
+
+    $proc = popen($fullCommand, 'r');
 
     $liveOutput     = '';
     $completeOutput = '';
@@ -67,7 +102,7 @@ function executeCommand($command)
         $liveOutput     = fread($proc, 4096);
         $completeOutput = $completeOutput . $liveOutput;
         print $liveOutput;
-        @ flush();
+        @flush();
     }
 
     pclose($proc);
