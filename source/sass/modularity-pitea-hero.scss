@@ -1,171 +1,194 @@
-.modularity-mod-pitea-hero  .c-pitea-hero {
+.modularity-mod-pitea-hero .c-pitea-hero {
+  --c-pitea-hero-heading-color: var(--color-stain-light-4, #ffffff);
+  --c-pitea-hero-heading-size: var(--font-size-heading-1, 50px);
+  --c-pitea-hero-heading-line-height: 52px;
+  --c-pitea-hero-search-bg: var(--color-stain-light-4, #ffffff);
+  --c-pitea-hero-search-border-color: var(--color-stain-light-2, #d0d0d0);
+  --c-pitea-hero-search-radius: 8px;
+  --c-pitea-hero-search-max-width: 640px;
+  --c-pitea-hero-icon-size: 1.25rem;
+  --c-pitea-hero-search-icon-size: 1.25rem;
+  --c-pitea-hero-button-bg: var(--color-darjnalen-light-4, #edf1e9);
+  --c-pitea-hero-button-color: var(--color-darjnalen-dark-3, #233b1f);
+  --c-pitea-hero-button-border-color: var(--color-darjnalen-dark-2, #2b512b);
+  --c-pitea-hero-button-radius: 999px;
+  --c-pitea-hero-button-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --c-pitea-hero-button-padding-x: 1.25rem;
+  --c-pitea-hero-button-padding-y: 0.75rem;
+  --c-pitea-hero-button-height: 48px;
+  --c-pitea-hero-content-gap: 33px;
+  --c-pitea-hero-buttons-gap: 10px;
 
-    --c-button-default-background-color: #edf1e9;
-    --c-button-default-color: #233B1F;
-    --c-button-default-border-color: #000;
-    --c-button-default-hover-background-color: #000;
-    --c-button-default-hover-color: #fff;
-    --c-button-default-hover-border-color: #000;
-    --c-button-default-active-background-color: #000;
-    --c-button-default-active-color: #fff;
-    --c-button-default-active-border-color: #000;
+  --c-button-default-background-color: var(--c-pitea-hero-button-bg);
+  --c-button-default-color: var(--c-pitea-hero-button-color);
+  --c-button-default-border-color: var(--c-pitea-hero-button-border-color);
+  --c-button-default-hover-background-color: var(--color-stain-dark-3, #000);
+  --c-button-default-hover-color: var(--color-stain-light-4, #fff);
+  --c-button-default-hover-border-color: var(--color-stain-dark-3, #000);
+  --c-button-default-active-background-color: var(--color-stain-dark-3, #000);
+  --c-button-default-active-color: var(--color-stain-light-4, #fff);
+  --c-button-default-active-border-color: var(--color-stain-dark-3, #000);
 
-    
-    position: relative;
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1920px;
+  margin: 0 auto;
+  min-height: 600px;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 100%;
+    background: black;
+  }
+
+  // Figma: Font/Size/Heading-1 50, Line-height 52, Bold
+  &__heading {
+    font-size: var(--c-pitea-hero-heading-size);
+    font-weight: 700;
+    line-height: var(--c-pitea-hero-heading-line-height);
+    text-align: center;
+    color: var(--c-pitea-hero-heading-color);
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 1920px;
+    gap: var(--c-pitea-hero-content-gap);
+    position: relative;
+    z-index: 1;
+  }
+
+  // Figma: white bar, light grey border, pill shape, slightly larger
+  &__search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: var(--c-pitea-hero-search-max-width);
     margin: 0 auto;
-    min-height: 600px;
+    background-color: var(--c-pitea-hero-search-bg);
+    border: 1px solid var(--c-pitea-hero-search-border-color);
+    border-radius: var(--c-pitea-hero-search-radius);
+    padding: 6px 6px 6px 20px;
+    gap: 10px;
 
-    &__overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: black;
-    }
+    &-input {
+      flex: 1;
+      min-width: 0;
 
-    &__heading {
-        font-size: 40px;
-        font-weight: 700;
-        line-height: 1.2;
-        text-align: center;
-        color: #fff;
-    }
+      .c-field__inner {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        box-shadow: none;
 
-    &__container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    &__content {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        position: relative;
-        z-index: 1;
-    }
-
-    &__search {
-        display: flex;
-        flex-direction: row;    
-        align-items: center;
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: var(--c-button-default-background-color);
-        border-radius: 8px;
-        padding: 4px;
-        gap: 10px;
-        
-        &-input {
-            flex: 1;
-            min-width: 0;
-            
-            .c-field__inner {
-                background-color: transparent;
-                border: none;
-                padding: 0;
-                box-shadow: none;
-
-                input {
-                    height: auto !important;
-                    padding: 10px !important;
-
-                }
-            }
-            
-            
+        input {
+          height: auto !important;
+          padding: 12px 10px !important;
+          font-size: var(--font-size-body, 18px);
         }
-
-        &-button {
-            flex-shrink: 0;
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            margin: 0;
-            min-width: auto;
-            width: auto;
-            height: auto !important;
-            
-            .c-button__label {
-                padding: 0;
-            }
-            
-            .c-icon {
-                color: var(--c-button-default-color);
-            }
-            
-            &:hover {
-                background-color: transparent;
-                
-                .c-icon {
-                    color: var(--c-button-default-hover-color);
-                }
-            }
-        }
+      }
     }
 
+    &-button {
+      flex-shrink: 0;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      min-width: auto;
+      width: auto;
+      height: 40px;
 
-    &__buttons {
-        display: flex;       
-        flex-wrap: wrap;    
-        width: 100%;
-        max-width: 650px;   
-        margin: 0 auto;
-        justify-content: center;
-        gap: var(--base, 10px);
+      .c-button__label {
+        padding: 0;
+      }
 
-        
+      .c-icon,
+      .fa-magnifying-glass {
+        color: black;
+        font-size: var(--c-pitea-hero-search-icon-size);
+      }
 
-        .c-button + .c-button {
-            margin-left: 0;
-        }
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
 
-        @media (max-width: 768px) {
-            grid-template-columns: repeat(2, max-content);
-        }
-        
-        @media (max-width: 480px) {
-            grid-template-columns: max-content;
-        }
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    justify-content: center;
+    gap: var(--c-pitea-hero-buttons-gap);
+
+    .c-button + .c-button {
+      margin-left: 0;
     }
 
-    &__button {
-        /* Magin händer här: */
-        min-width: min-content;         
-        width: fit-content;
-        
-        background-color: var(--c-button-default-background-color);
-        white-space: nowrap;
-      
-        .c-button__label {
-            justify-content: space-between;
-            flex-direction: row-reverse !important;
-            letter-spacing: 0.0em;
-
-            &-text {
-                font-weight: 700;
-                font-size: 16px;
-            color: var(--c-button-default-color);
-
-            }
-        }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, max-content);
     }
+
+    @media (max-width: 480px) {
+      grid-template-columns: max-content;
+    }
+  }
+
+  &__button {
+    min-width: min-content;
+    width: fit-content;
+    padding: var(--c-pitea-hero-button-padding-y)
+      var(--c-pitea-hero-button-padding-x);
+    background-color: var(--c-pitea-hero-button-bg);
+    border: 1px solid var(--c-pitea-hero-button-border-color);
+    border-radius: var(--c-pitea-hero-button-radius);
+    box-shadow: var(--c-pitea-hero-button-shadow);
+    white-space: nowrap;
+    height: var(--c-pitea-hero-button-height);
+
+    .c-button__label {
+      justify-content: center;
+      flex-direction: row !important;
+      letter-spacing: 0;
+      gap: 8px;
+    }
+
+    .c-button__label-text {
+      font-weight: 700;
+      font-size: var(--font-size-button, 16px);
+      color: var(--c-pitea-hero-button-color);
+    }
+
+    .c-icon {
+      color: var(--c-pitea-hero-button-color);
+      font-size: var(--c-pitea-hero-icon-size);
+    }
+  }
 }
