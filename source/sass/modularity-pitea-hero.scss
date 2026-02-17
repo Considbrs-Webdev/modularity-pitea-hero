@@ -28,6 +28,7 @@
   --c-button-default-active-background-color: var(--color-stain-dark-3, #000);
   --c-button-default-active-color: var(--color-stain-light-4, #fff);
   --c-button-default-active-border-color: var(--color-stain-dark-3, #000);
+  --color-button-disabled-bg: var(--color-stain-light-4, #d0d0d0);
 
   position: relative;
   width: 100%;
@@ -122,6 +123,7 @@
       min-width: auto;
       width: auto;
       height: 40px;
+      filter: none;
 
       .c-button__label {
         padding: 0;
