@@ -23,8 +23,8 @@ define('MODULARITYPITEAHERO_URL', plugins_url('', __FILE__));
 define('MODULARITYPITEAHERO_MODULE_VIEW_PATH', plugin_dir_path(__FILE__) . 'source/php/Module/views');
 define('MODULARITYPITEAHERO_MODULE_PATH', MODULARITYPITEAHERO_PATH . 'source/php/Module/');
 
-// Load text domain
-add_action('init', function () {
+// Load text domain early (before acf/init) so PHP ACF field labels translate
+add_action('plugins_loaded', function () {
     load_plugin_textdomain('modularity-pitea-hero', false, plugin_basename(dirname(__FILE__)) . '/languages');
 });
 
