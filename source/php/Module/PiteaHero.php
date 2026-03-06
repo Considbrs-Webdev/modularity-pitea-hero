@@ -42,8 +42,9 @@ class PiteaHero extends \Modularity\Module
         $data['overlayOpacity'] = get_field($fieldNamespace . 'overlay_opacity', $this->ID);
         $data['heading'] = get_field($fieldNamespace . 'heading', $this->ID);
         $data['searchPlaceholder'] = get_field($fieldNamespace . 'search_placeholder', $this->ID);
-
+        $data['searchUrl'] = apply_filters('Modularity/PiteaHero/SearchUrl', home_url('/'));
         // Get buttons repeater
+
         $buttons = get_field($fieldNamespace . 'buttons', $this->ID);
         $data['buttons'] = [];
 
