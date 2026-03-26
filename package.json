@@ -5,14 +5,14 @@
   "main": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Considbrs-Webdev/modularity-pitea-hero"
+    "url": "https://github.com/considbrs-webdev/modularity-pitea-hero"
   },
   "author": "Consid Borås AB",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Considbrs-Webdev/modularity-pitea-hero/issues"
+    "url": "https://github.com/considbrs-webdev/modularity-pitea-hero/issues"
   },
-  "homepage": "https://github.com/Considbrs-Webdev/modularity-pitea-hero",
+  "homepage": "https://github.com/considbrs-webdev/modularity-pitea-hero",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "cross-env NODE_ENV=development webpack --watch",
