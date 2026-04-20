@@ -56,7 +56,7 @@
   // Figma: Font/Size/Heading-1 50, Line-height 52, Bold
   &__heading {
     font-size: var(--c-pitea-hero-heading-size);
-    font-weight: 700;
+    font-weight: var(--h1-font-weight, var(--font-weight-heading, 600));
     line-height: var(--c-pitea-hero-heading-line-height);
     text-align: center;
     color: var(--c-pitea-hero-heading-color);
@@ -141,7 +141,11 @@
               0 0 0 0.25rem
                 color-mix(
                   in srgb,
-                  var(--c-pitea-hero-focus-ring, var(--color-stain-dark-3, #0d6efd)) 35%,
+                  var(
+                      --c-pitea-hero-focus-ring,
+                      var(--color-stain-dark-3, #0d6efd)
+                    )
+                    35%,
                   transparent
                 );
           }
@@ -184,7 +188,8 @@
         box-shadow: 0 0 0 0.25rem
           color-mix(
             in srgb,
-            var(--c-pitea-hero-focus-ring, var(--color-stain-dark-3, #0d6efd)) 35%,
+            var(--c-pitea-hero-focus-ring, var(--color-stain-dark-3, #0d6efd))
+              35%,
             transparent
           );
       }
@@ -233,7 +238,7 @@
     }
 
     .c-button__label-text {
-      font-weight: 700;
+      font-weight: var(--font-weight-button, 500);
       font-size: var(--font-size-button, 16px);
       color: var(--c-pitea-hero-button-color);
     }
