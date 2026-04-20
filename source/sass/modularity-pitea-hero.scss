@@ -100,6 +100,23 @@
       flex: 1;
       min-width: 0;
 
+      // Real <label> in DOM (hideLabel false); clip visually like Bootstrap .visually-hidden
+      &--label-hidden .c-field__label {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        font-size: 1rem !important;
+        font-weight: 400 !important;
+      }
+
       .c-field__inner {
         background-color: transparent;
         border: none;
@@ -110,6 +127,24 @@
           height: auto !important;
           padding: 12px 10px !important;
           font-size: var(--font-size-body, 18px);
+
+          &:focus {
+            outline: 0;
+            box-shadow: none;
+          }
+
+          &:focus-visible {
+            outline: 0;
+            border-radius: 4px;
+            box-shadow:
+              0 0 0 1px var(--c-pitea-hero-search-bg, #fff),
+              0 0 0 0.25rem
+                color-mix(
+                  in srgb,
+                  var(--c-pitea-hero-focus-ring, var(--color-stain-dark-3, #0d6efd)) 35%,
+                  transparent
+                );
+          }
         }
       }
     }
@@ -137,6 +172,21 @@
 
       &:hover {
         background-color: transparent;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-visible {
+        outline: 0;
+        border-radius: var(--c-pitea-hero-search-radius, 8px);
+        box-shadow: 0 0 0 0.25rem
+          color-mix(
+            in srgb,
+            var(--c-pitea-hero-focus-ring, var(--color-stain-dark-3, #0d6efd)) 35%,
+            transparent
+          );
       }
     }
   }
