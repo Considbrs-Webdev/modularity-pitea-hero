@@ -42,6 +42,8 @@ class PiteaHero extends \Modularity\Module
         $data['overlayOpacity'] = get_field($fieldNamespace . 'overlay_opacity', $this->ID);
         $data['heading'] = get_field($fieldNamespace . 'heading', $this->ID);
         $data['searchPlaceholder'] = get_field($fieldNamespace . 'search_placeholder', $this->ID);
+        // Visible placeholder can differ; accessible name uses this explicit label (see blade + visually-hidden CSS).
+        $data['searchFieldLabel'] = __('Search on the website', 'modularity-pitea-hero');
         $data['searchUrl'] = apply_filters('Modularity/PiteaHero/SearchUrl', home_url('/'));
         // Get buttons repeater
 
@@ -67,12 +69,46 @@ class PiteaHero extends \Modularity\Module
                     $buttonData['target'] = '';
                 }
 
+                $buttonData['linkAccessSuffix'] = $this->linkAccessibilitySuffix(
+                    (string) ($buttonData['url'] ?? ''),
+                    (string) ($buttonData['target'] ?? ''),
+                );
+
                 // Format as object for Blade template
                 $data['buttons'][] = (object) $buttonData;
             }
         }
 
         return $data;
+    }
+
+    /**
+     * Screen-reader suffix for hero links (external site / new tab), for inclusive name on the control.
+     */
+    private function linkAccessibilitySuffix(string $url, string $target): string
+    {
+        if ($url === '') {
+            return '';
+        }
+
+        $homeHost = wp_parse_url(home_url(), PHP_URL_HOST);
+        $linkHost = wp_parse_url($url, PHP_URL_HOST);
+        $external = is_string($linkHost) && $linkHost !== ''
+            && is_string($homeHost) && strcasecmp($linkHost, $homeHost) !== 0;
+
+        $newTab = $target === '_blank';
+
+        if ($external && $newTab) {
+            return __('(link to another website, opens in new window)', 'modularity-pitea-hero');
+        }
+        if ($external) {
+            return __('(link to another website)', 'modularity-pitea-hero');
+        }
+        if ($newTab) {
+            return __('(opens in new window)', 'modularity-pitea-hero');
+        }
+
+        return '';
     }
 
     /**
